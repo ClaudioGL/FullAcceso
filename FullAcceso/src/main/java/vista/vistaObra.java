@@ -21,8 +21,6 @@ public class vistaObra extends JFrame {
         this.init();
     }
     
-    
-    
      public void init(){
         
         this.setSize(500, 500);
