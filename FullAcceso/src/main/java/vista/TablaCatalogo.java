@@ -5,10 +5,27 @@
  */
 package vista;
 
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author claug
  */
-public class TablaCatalogo {
+public class TablaCatalogo extends JPanel {
+    private JTable tabla;
+    private DefaultTableModel modelo;
+    private String Columnas [] = {"descripcion", "unidad", "precio unitario"};
     
+    
+    public TablaCatalogo(){
+        Object [][] datos = {};   
+        this.modelo = new DefaultTableModel(datos, Columnas);
+        this.tabla = new JTable(modelo);
+        JScrollPane js = new JScrollPane(this.tabla);
+        
+        this.add(js);
+    }
 }

@@ -11,4 +11,48 @@ package modelo_catalogo;
  */
 public class Obra {
     
+    private int id;
+    private String descripcion;
+    private String unidad;
+    private int precioUnitario;
+
+    public Obra() {
+    }
+    
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public int getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
+    }
+
+    public void setPrecioUnitario(int precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+    
+    
+    
 }

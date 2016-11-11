@@ -5,10 +5,37 @@
  */
 package vista;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+
 /**
  *
  * @author claug
  */
-public class vistaObra {
+public class vistaObra extends JFrame {
+    
+    private PanelObra panelObra;
+    private BotonesObra botones;
+
+    public vistaObra() {
+        this.init();
+    }
+    
+    
+    
+     public void init(){
+        
+        this.setSize(500, 500);
+        
+        BorderLayout dist = new BorderLayout();
+        this.setLayout(dist);
+        
+        this.panelObra = new PanelObra();
+        this.botones = new BotonesObra();
+        
+        this.add(this.panelObra, BorderLayout.CENTER);
+        this.add(this.botones, BorderLayout.SOUTH);
+        
+    }
     
 }
