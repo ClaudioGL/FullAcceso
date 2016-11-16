@@ -52,6 +52,11 @@ public class Obra {
     public void setPrecioUnitario(int precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
+
+    @Override
+    public String toString() {
+        return "Obra{" + "id=" + id + ", descripcion=" + descripcion + ", unidad=" + unidad + ", precioUnitario=" + precioUnitario + '}';
+    }
     
     
     

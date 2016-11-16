@@ -14,13 +14,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author claug
  */
-public class TablaCatalogo extends JPanel {
+public class TablaPresupuesto extends JPanel{
+    
     private JTable tabla;
     private DefaultTableModel modelo;
-    private String Columnas [] = {"descripcion", "unidad", "precio unitario"};
+    private String Columnas [] = {"Descripcion", "Unidad", "Precio Unitario", "Cantidad" , "Total"};
     
     
-    public TablaCatalogo(){
+    public TablaPresupuesto(){
         Object [][] datos = {};   
         this.modelo = new DefaultTableModel(datos, Columnas);
         this.tabla = new JTable(modelo);
@@ -40,5 +41,6 @@ public class TablaCatalogo extends JPanel {
     public String[] getColumnas() {
         return Columnas;
     }
+    
     
 }

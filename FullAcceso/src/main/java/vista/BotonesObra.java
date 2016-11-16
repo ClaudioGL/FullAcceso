@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author claug
  */
-public class BotonesObra extends JPanel implements ActionListener{
+public class BotonesObra extends JPanel{
     
     private JButton guardar;
     private JButton cancelar;
@@ -27,14 +27,19 @@ public class BotonesObra extends JPanel implements ActionListener{
     
          this.guardar = new JButton("Guardar");
          this.cancelar = new JButton("Cancelar");
-         
+       
          this.add(this.guardar);
          this.add(this.cancelar);
     
      }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JButton getGuardar() {
+        return guardar;
     }
+
+    public JButton getCancelar() {
+        return cancelar;
+    }
+     
+     
 }

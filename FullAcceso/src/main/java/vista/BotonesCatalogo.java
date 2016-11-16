@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.Controlador;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,29 +18,43 @@ import javax.swing.JPanel;
  *
  * @author claug
  */
-public class BotonesCatalogo extends JPanel implements ActionListener {
+public class BotonesCatalogo extends JPanel {
     
-    private JButton btnObra, btnCategoria;
+    private JButton btnObra, btnPresupuesto;
     private ImageIcon icoObra, icoCategoria;
     
     public BotonesCatalogo(){
         
-        //this.setLayout(new FlowLayout());
-        GridLayout dist = new GridLayout(2,1);
-        this.setLayout(dist);
+        this.setLayout(new FlowLayout());
+//        GridLayout dist = new GridLayout(2,1);
+//        this.setLayout(dist);
         
         //this.icoObra = new ImageIcon("E:\\c\\Programas\\iconos/settings.png");
         this.btnObra = new JButton("Nueva Obra");
+        this.btnPresupuesto = new JButton("Presupuesto");
+       
+        
         //this.btnObra.setIcon(this.icoProducto);
         
         
         this.add(this.btnObra);
+        this.add(this.btnPresupuesto);
        // this.add(this.btnCategoria);
         
     } 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JButton getBtnObra() {
+        return btnObra;
     }
+
+    public void setBtnObra(JButton btnObra) {
+        this.btnObra = btnObra;
+    }
+
+    public JButton getBtnPresupuesto() {
+        return btnPresupuesto;
+    }
+  
+
+    
 }

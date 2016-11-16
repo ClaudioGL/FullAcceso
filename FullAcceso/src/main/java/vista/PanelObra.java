@@ -19,12 +19,12 @@ import javax.swing.JTextField;
  */
 class PanelObra extends JPanel{
     
-    private JLabel lbNombre, lbDescripcion, lbValor;
-	private JTextField txtNombre, txtValor;
-        private JTextArea txtDescripcion;
+    private JLabel lbDescripcion, lbValor;
+	private JTextField txtDescripcion, txtValor;
+        //private JTextArea txtDescripcion;
 	 private JPanel panel1, panel2;
         private JComboBox combo;
-        private String [] categorias = {"maderas", "pinturas", "tabiqueria"};
+        private String [] unidades = {"GL", "ML", "M2", "M3"," UN", "OTRO"};
     
      public PanelObra(){
             
@@ -32,22 +32,18 @@ class PanelObra extends JPanel{
             panel1 = new JPanel();
             panel2 = new JPanel();
             
-            GridLayout distribucion = new GridLayout(3, 2);
+            GridLayout distribucion = new GridLayout(2, 2);
             panel1.setLayout(distribucion);
             panel2.setLayout( new FlowLayout());
             
-            this.lbNombre = new JLabel("Nombre");
-            this.lbDescripcion = new JLabel("Descripcion");
+             this.lbDescripcion = new JLabel("Descripcion");
             this.lbValor = new JLabel("Valor Producto");
             
-            this.txtNombre = new JTextField("");
             this.txtValor = new JTextField("");
-            this.txtDescripcion = new JTextArea(5, 20);
+            this.txtDescripcion = new JTextField("");
             
-            this.combo = new JComboBox(this.categorias);
+            this.combo = new JComboBox(this.unidades);
             
-            this.panel1.add(this.lbNombre);
-            this.panel1.add(this.txtNombre);
             this.panel1.add(this.lbDescripcion);
             this.panel1.add(this.txtDescripcion);
             this.panel1.add(this.lbValor);
@@ -58,5 +54,19 @@ class PanelObra extends JPanel{
             this.add(this.panel1, BorderLayout.CENTER);
             this.add(this.panel2, BorderLayout.SOUTH);
         }
+
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public JTextField getTxtValor() {
+        return txtValor;
+    }
+
+    public JComboBox getCombo() {
+        return combo;
+    }
+     
     
+     
 }
