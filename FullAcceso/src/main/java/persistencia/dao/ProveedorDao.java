@@ -6,25 +6,24 @@
 package persistencia.dao;
 
 import java.util.ArrayList;
-import modelo_catalogo.Obra;
 import modelo_catalogo.Proveedor;
-import modelo_catalogo.Unidad;
 
 /**
  *
  * @author claug
  */
-public interface ObraDao {
+public interface ProveedorDao {
     
-        public Obra buscar(String nombre);
+        public Proveedor buscar(String nombre);
 
-	public boolean guardar(Obra cat, Proveedor pro , Unidad uni);
+	public boolean guardar(Proveedor pro);
 
 	public void editar();
 
-	public ArrayList<Obra> listar();
+	public ArrayList<Proveedor> listar();
 
-	public boolean borrar(int idCat);
+	public boolean borrar(int idPro);
         
-        public Obra buscarId(int id);
+        public Proveedor buscarId(int id);
+    
 }

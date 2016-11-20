@@ -6,7 +6,11 @@
 package persistencia.factory;
 
 import persistencia.dao.ObraDao;
+import persistencia.dao.ProveedorDao;
+import persistencia.dao.UnidadDao;
 import persistencia.impl.ObraImpl;
+import persistencia.impl.ProveedorImpl;
+import persistencia.impl.UnidadImpl;
 
 /**
  *
@@ -30,5 +34,7 @@ public class DAOFactory {
     }
 
    public ObraDao getObraDao() { return new ObraImpl(); }
+   public ProveedorDao getProveedorDao() { return new ProveedorImpl(); }
+   public UnidadDao getUnidadDao() { return new UnidadImpl(); }
     
 }

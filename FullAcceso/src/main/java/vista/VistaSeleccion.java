@@ -114,6 +114,12 @@ public class VistaSeleccion extends JFrame implements InterfaceVista{
             int cant = Integer.parseInt(this.txtcantidad.getText());
             return cant;
         }
+        public String[] setFiltro(){
+           String [] filtros = new String[2];
+           filtros[0] = "filtro1";
+            filtros[1] = "filtro2";
+            return filtros;
+        }
 
     @Override
     public void iniciar() {

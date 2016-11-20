@@ -47,8 +47,8 @@ public class Presupuesto extends JFrame implements InterfaceVista {
        this.panel = new JPanel();
        
        
-       this.botones.getBtnAgregar().setActionCommand(AGREGAR);
-       this.botones.getBtnEliminar().setActionCommand(ELIMINAR);
+       this.botones.getBtnAgregar().setActionCommand(AGREGAR_SELECCION);
+       this.botones.getBtnEliminar().setActionCommand(ELIMINAR_SELECCION);
                
        this.panel.add(this.lbTotal);
        this.panel.add(this.txtTotal);

@@ -14,9 +14,9 @@ import persistencia.impl.ObraImpl;
  */
 public class GestionObra {
     
-        public boolean agregar(Obra obra){
+        public boolean agregar(Obra obra, Proveedor pro, Unidad uni){
         ObraImpl lormDao = new ObraImpl(); 
-        boolean resp = lormDao.guardar(obra);
+        boolean resp = lormDao.guardar(obra, pro, uni);
         return resp;
     }
     
@@ -50,4 +50,29 @@ public class GestionObra {
 //        return resp;
 //    }
     
+    public ArrayList<Obra> filtrar(ArrayList<Obra> obras, String proveedor, String tipo){
+        ArrayList<Obra> filtrado = new ArrayList<Obra>();
+        if(proveedor != "none"){
+            for(int i=0;i<obras.size();i++){
+                if(obras.get(i).getProveedor().equals(proveedor)){
+                    filtrado.add(obras.get(i));
+                }
+            }
+            obras = filtrado;
+        }if(tipo != "none" && proveedor != "none"){
+            for(int i=0;i<obras.size();i++){
+                if(obras.get(i).getTipo().equals(tipo)){
+                    filtrado.add(obras.get(i));
+                }
+            }
+        }if(tipo != "none"){
+            for(int i=0;i<obras.size();i++){
+                if(obras.get(i).getTipo().equals(tipo)){
+                    filtrado.add(obras.get(i));
+                }
+            }
+        } 
+        return filtrado;
+    }
+            
 }

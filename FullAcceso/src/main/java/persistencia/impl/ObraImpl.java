@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo_catalogo.Obra;
+import modelo_catalogo.Proveedor;
+import modelo_catalogo.Unidad;
 import persistencia.dao.ObraDao;
 import persistencia.factory.DerbyDaoFactory;
 
@@ -34,14 +36,16 @@ public class ObraImpl implements ObraDao {
     }
 
     @Override
-    public boolean guardar(Obra obra) {
+    public boolean guardar(Obra obra, Proveedor pro, Unidad uni) {
            boolean resultado = false;
-        String sql = "INSERT INTO GRUPO.OBRA (DESCRIPCION, UNIDAD, PRECIO) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO GRUPO.OBRA (OBRA_DESCRIPCION, OBRA_PRECIO, OBRA_TIPO, PRO_ID, UNI_ID) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstm = this.conn.prepareStatement(sql);
             pstm.setString(1, obra.getDescripcion());
-            pstm.setString(2, obra.getUnidad());
-            pstm.setInt(3, obra.getPrecioUnitario());
+            pstm.setInt(2, obra.getPrecioUnitario());
+            pstm.setString(3, obra.getTipo());
+            pstm.setInt(4, pro.getIdProveedor());
+            pstm.setInt(5, uni.getId());
             pstm.executeUpdate();
             resultado = true;
 
@@ -76,10 +80,13 @@ public class ObraImpl implements ObraDao {
                 do {
                     
                     Obra obra = new Obra();
-                    obra.setId(rs.getInt("ID_OBRA"));
-                    obra.setDescripcion(rs.getString("DESCRIPCION"));
-                    obra.setUnidad(rs.getString("UNIDAD"));
-                    obra.setPrecioUnitario(rs.getInt("PRECIO"));
+                    obra.setId(rs.getInt("OBRA_ID"));
+                    obra.setDescripcion(rs.getString("OBRA_DESCRIPCION"));
+                    obra.setPrecioUnitario(rs.getInt("OBRA_PRECIO"));
+                    obra.setUnidad(String.valueOf(rs.getInt("UNI_ID")));
+                    obra.setProveedor(String.valueOf(rs.getInt("PRO_ID")));
+                    obra.setUnidad(rs.getString("OBRA_TIPO"));
+                    
                     obras.add(obra);
 
                 } while (rs.next());

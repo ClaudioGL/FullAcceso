@@ -13,14 +13,13 @@ public class Obra {
     
     private int id;
     private String descripcion;
-    private String unidad;
+    private String unidad, proveedor, tipo;
     private int precioUnitario;
 
     public Obra() {
     }
-    
-    
 
+ 
     public int getId() {
         return id;
     }
@@ -53,6 +52,22 @@ public class Obra {
         this.precioUnitario = precioUnitario;
     }
 
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
     @Override
     public String toString() {
         return "Obra{" + "id=" + id + ", descripcion=" + descripcion + ", unidad=" + unidad + ", precioUnitario=" + precioUnitario + '}';

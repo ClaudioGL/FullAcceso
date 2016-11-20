@@ -34,6 +34,8 @@ public class Catalogo extends JFrame implements InterfaceVista{
        
        this.botones.getBtnObra().setActionCommand(OBRA_AGREGAR);
        this.botones.getBtnPresupuesto().setActionCommand(PRESUPUESTO_AGREGAR);
+       this.botones.getBtnProveedor().setActionCommand(PROVEEDOR_AGREGAR);
+       this.botones.getBtnUnidad().setActionCommand(UNIDAD_AGREGAR);
                
        
        this.add(this.botones, BorderLayout.NORTH);
@@ -77,6 +79,8 @@ public class Catalogo extends JFrame implements InterfaceVista{
     public void setControlador(Controlador controlador) {
        this.botones.getBtnObra().addActionListener(controlador);
        this.botones.getBtnPresupuesto().addActionListener(controlador);
+       this.botones.getBtnProveedor().addActionListener(controlador);
+       this.botones.getBtnUnidad().addActionListener(controlador);
     }
     
     

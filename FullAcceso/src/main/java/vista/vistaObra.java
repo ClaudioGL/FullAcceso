@@ -7,8 +7,11 @@ package vista;
 
 import controlador.Controlador;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import modelo_catalogo.Obra;
+import modelo_catalogo.Proveedor;
+import modelo_catalogo.Unidad;
 
 /**
  *
@@ -33,8 +36,8 @@ public class vistaObra extends JFrame implements InterfaceVista{
         this.panelObra = new PanelObra();
         this.botones = new BotonesObra();
         
-        this.botones.getGuardar().setActionCommand(GUARDAR);
-        this.botones.getCancelar().setActionCommand(CANCELAR);
+        this.botones.getGuardar().setActionCommand(GUARDAR_OBRA);
+        this.botones.getCancelar().setActionCommand(CANCELAR_OBRA);
         
         
         this.add(this.panelObra, BorderLayout.CENTER);
@@ -60,10 +63,20 @@ public class vistaObra extends JFrame implements InterfaceVista{
     public Obra getDatos(){
         Obra obra = new Obra();
         obra.setDescripcion(this.panelObra.getTxtDescripcion().getText());
-        obra.setUnidad((String)this.panelObra.getCombo().getSelectedItem());
+        obra.setTipo((String)this.panelObra.getCombo1().getSelectedItem());
+        obra.setProveedor((String)this.panelObra.getCombo2().getSelectedItem());
+        obra.setUnidad((String)this.panelObra.getCombo3().getSelectedItem());
         obra.setPrecioUnitario(Integer.parseInt(this.panelObra.getTxtValor().getText()));
         
         return obra;
     }
+      public void listarComboBox(ArrayList <Proveedor> proveedores, ArrayList <Unidad> unidades){
+         for(int i =0;i<proveedores.size();i++){
+           this.panelObra.getCombo2().addItem(proveedores.get(i).getNombre());
+         }
+         for(int j =0;j<proveedores.size();j++){
+           this.panelObra.getCombo3().addItem(unidades.get(j).getNombre());
+         }
+     }
     
 }
