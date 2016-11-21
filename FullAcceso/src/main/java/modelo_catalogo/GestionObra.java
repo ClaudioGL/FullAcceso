@@ -14,9 +14,9 @@ import persistencia.impl.ObraImpl;
  */
 public class GestionObra {
     
-        public boolean agregar(Obra obra, Proveedor pro, Unidad uni){
+        public boolean agregar(Obra obra){
         ObraImpl lormDao = new ObraImpl(); 
-        boolean resp = lormDao.guardar(obra, pro, uni);
+        boolean resp = lormDao.guardar(obra);
         return resp;
     }
     
@@ -29,6 +29,10 @@ public class GestionObra {
      public Obra buscar(int id){
         ObraImpl lormDao = new ObraImpl(); 
         Obra resp = lormDao.buscarId(id);
+        GestionProveedor gp = new GestionProveedor();
+        GestionUnidad gu = new GestionUnidad();
+        resp.setProveedor(gp.buscarId(resp.getProveedor().getIdProveedor()));
+        resp.setUnidad(gu.buscarId(resp.getUnidad().getId()));
         return resp;
     }
 //    
@@ -41,6 +45,12 @@ public class GestionObra {
     public ArrayList<Obra> listar(){
         ObraImpl lormDao = new ObraImpl(); 
         ArrayList<Obra> resp = lormDao.listar();
+        GestionProveedor gp = new GestionProveedor();
+        GestionUnidad gu = new GestionUnidad();
+        for (int i=0;i<resp.size();i++){
+        resp.get(i).setProveedor(gp.buscarId(resp.get(i).getProveedor().getIdProveedor()));
+        resp.get(i).setUnidad(gu.buscarId(resp.get(i).getUnidad().getId()));
+        }
         return resp;
     }
     

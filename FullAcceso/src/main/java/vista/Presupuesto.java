@@ -65,7 +65,7 @@ public class Presupuesto extends JFrame implements InterfaceVista {
                     Item item = iteraItem.next();
                     Object [] data = new Object[5];
                     data[0] = item.getObra().getDescripcion();
-                    data[1] = item.getObra().getUnidad();
+                    data[1] = item.getObra().getUnidad().getNombre();
                     data[2] = item.getObra().getPrecioUnitario();
                     data[3] = item.getCantidad();
                     data[4] = "$ " + item.getTotal();

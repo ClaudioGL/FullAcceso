@@ -49,8 +49,9 @@ public class Catalogo extends JFrame implements InterfaceVista{
                     Obra obra = iteraObra.next();
                     Object [] data = new Object[5];
                     data[0] = obra.getDescripcion();
-                    data[1] = obra.getUnidad();
-                    data[2] = obra.getPrecioUnitario();
+                    data[1] = obra.getUnidad().getNombre();
+                    data[2] = obra.getProveedor().getNombre();
+                    data[3] = obra.getPrecioUnitario();
                    
                     this.tabla.getModelo().addRow(data);
                     

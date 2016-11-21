@@ -114,8 +114,34 @@ public class ProveedorImpl implements ProveedorDao{
 
     @Override
     public Proveedor buscarId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Proveedor pro = null;
+        ResultSet rs;
+        String sql = "SELECT * FROM GRUPO.PROVEEDOR WHERE PRO_ID = ?";
+
+        try {
+
+            PreparedStatement pstm = this.conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            rs = pstm.executeQuery();
+
+            if (!rs.next()) {
+                System.out.println("NO HAY DATOS");
+
+            } else {
+//                do {
+                    pro = new Proveedor();
+                    pro.setIdProveedor(rs.getInt("PRO_ID"));
+                    pro.setNombre(rs.getString("PRO_NOMBRE"));
+                    pro.setPago(rs.getString("PRO_PAGO"));
+                    
+//                } while (rs.next());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProveedorImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pro;
+        }
       private static Proveedor map(ResultSet resultSet) throws SQLException {
         Proveedor pro = new Proveedor();
         pro.setIdProveedor(resultSet.getInt("PRO_ID"));

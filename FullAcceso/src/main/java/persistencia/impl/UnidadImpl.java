@@ -109,8 +109,33 @@ public class UnidadImpl implements UnidadDao{
 
     @Override
     public Unidad buscarId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Unidad uni = null;
+        ResultSet rs;
+        String sql = "SELECT * FROM GRUPO.UNIDAD WHERE UNI_ID = ?";
+
+        try {
+
+            PreparedStatement pstm = this.conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            rs = pstm.executeQuery();
+
+            if (!rs.next()) {
+                System.out.println("NO HAY DATOS");
+
+            } else {
+//                do {
+                    uni = new Unidad();
+                    uni.setId(rs.getInt("UNI_ID"));
+                    uni.setNombre(rs.getString("UNI_NOMBRE"));
+                   
+//                } while (rs.next());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UnidadImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return uni;
+        }
     
       private static Unidad map(ResultSet resultSet) throws SQLException {
         Unidad uni = new Unidad();

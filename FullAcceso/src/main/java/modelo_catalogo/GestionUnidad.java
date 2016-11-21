@@ -32,7 +32,7 @@ public class GestionUnidad {
 //        return resp;
 //    }
     
-     public Unidad buscar(int id){
+     public Unidad buscarId(int id){
         UnidadImpl lormDao = new UnidadImpl(); 
         Unidad resp = lormDao.buscarId(id);
         return resp;

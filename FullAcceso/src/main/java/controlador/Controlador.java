@@ -61,7 +61,9 @@ public class Controlador implements ActionListener{
         }else if(e.getActionCommand().equals(InterfaceVista.GUARDAR_OBRA)){
             Obra o = new Obra();
             o = obra.getDatos();
-            modelo.agregar(o, modeloPro.buscar(o.getProveedor()), modeloUni.buscar(o.getUnidad()));
+            o.setProveedor(modeloPro.buscar(obra.getProveedorNombre()));
+            o.setUnidad(modeloUni.buscar(obra.getUnidadNombre()));
+            modelo.agregar(o);
             catalogo.limpiaTabla();
             catalogo.setInformacion(this.modelo.listar());
             obra.detener();

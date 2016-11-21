@@ -13,51 +13,28 @@ public class Obra {
     
     private int id;
     private String descripcion;
-    private String unidad, proveedor, tipo;
+    private String tipo;
+    private Proveedor proveedor;
+    private Unidad unidad;
     private int precioUnitario;
 
     public Obra() {
     }
 
- 
     public int getId() {
         return id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public String getUnidad() {
-        return unidad;
-    }
-
-    public int getPrecioUnitario() {
-        return precioUnitario;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
-    }
-
-    public void setPrecioUnitario(int precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
-
-    public String getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
     }
 
     public String getTipo() {
@@ -67,6 +44,33 @@ public class Obra {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public Unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
+
+    public int getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(int precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+    
+
+    
     
     @Override
     public String toString() {

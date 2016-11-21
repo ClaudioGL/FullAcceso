@@ -36,7 +36,7 @@ public class ObraImpl implements ObraDao {
     }
 
     @Override
-    public boolean guardar(Obra obra, Proveedor pro, Unidad uni) {
+    public boolean guardar(Obra obra) {
            boolean resultado = false;
         String sql = "INSERT INTO GRUPO.OBRA (OBRA_DESCRIPCION, OBRA_PRECIO, OBRA_TIPO, PRO_ID, UNI_ID) VALUES (?, ?, ?, ?, ?)";
         try {
@@ -44,8 +44,8 @@ public class ObraImpl implements ObraDao {
             pstm.setString(1, obra.getDescripcion());
             pstm.setInt(2, obra.getPrecioUnitario());
             pstm.setString(3, obra.getTipo());
-            pstm.setInt(4, pro.getIdProveedor());
-            pstm.setInt(5, uni.getId());
+            pstm.setInt(4, obra.getProveedor().getIdProveedor());
+            pstm.setInt(5, obra.getUnidad().getId());
             pstm.executeUpdate();
             resultado = true;
 
@@ -80,12 +80,16 @@ public class ObraImpl implements ObraDao {
                 do {
                     
                     Obra obra = new Obra();
+                    Unidad uni = new Unidad();
+                    Proveedor pro = new Proveedor();
                     obra.setId(rs.getInt("OBRA_ID"));
                     obra.setDescripcion(rs.getString("OBRA_DESCRIPCION"));
                     obra.setPrecioUnitario(rs.getInt("OBRA_PRECIO"));
-                    obra.setUnidad(String.valueOf(rs.getInt("UNI_ID")));
-                    obra.setProveedor(String.valueOf(rs.getInt("PRO_ID")));
-                    obra.setUnidad(rs.getString("OBRA_TIPO"));
+                    obra.setTipo(rs.getString("OBRA_TIPO"));
+                    pro.setIdProveedor(rs.getInt("PRO_ID"));
+                    uni.setId(rs.getInt("UNI_ID"));
+                    obra.setProveedor(pro);
+                    obra.setUnidad(uni);
                     
                     obras.add(obra);
 
@@ -107,7 +111,7 @@ public class ObraImpl implements ObraDao {
     public Obra buscarId(int id) {
        Obra obra = null;
         ResultSet rs;
-        String sql = "SELECT * FROM GRUPO.OBRA WHERE ID_OBRA = ?";
+        String sql = "SELECT * FROM GRUPO.OBRA WHERE OBRA_ID = ?";
 
         try {
 
@@ -121,10 +125,16 @@ public class ObraImpl implements ObraDao {
             } else {
 //                do {
                     obra = new Obra();
-                    obra.setId(rs.getInt("ID_OBRA"));
-                    obra.setDescripcion(rs.getString("DESCRIPCION"));
-                    obra.setPrecioUnitario(rs.getInt("PRECIO"));
-                    obra.setUnidad(rs.getString("UNIDAD"));
+                    Proveedor pro = new Proveedor();
+                    Unidad uni = new Unidad();
+                    obra.setId(rs.getInt("OBRA_ID"));
+                    obra.setDescripcion(rs.getString("OBRA_DESCRIPCION"));
+                    obra.setPrecioUnitario(rs.getInt("OBRA_PRECIO"));
+                    obra.setTipo(rs.getString("OBRA_TIPO"));
+                    pro.setIdProveedor(rs.getInt("PRO_ID"));
+                    uni.setId(rs.getInt("UNI_ID"));
+                    obra.setProveedor(pro);
+                    obra.setUnidad(uni);
 //                } while (rs.next());
             }
 
@@ -133,5 +143,6 @@ public class ObraImpl implements ObraDao {
         }
         return obra;
         }
+   
     
 }

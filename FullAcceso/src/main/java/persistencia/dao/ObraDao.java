@@ -18,7 +18,7 @@ public interface ObraDao {
     
         public Obra buscar(String nombre);
 
-	public boolean guardar(Obra cat, Proveedor pro , Unidad uni);
+	public boolean guardar(Obra cat);
 
 	public void editar();
 

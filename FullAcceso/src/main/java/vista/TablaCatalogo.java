@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class TablaCatalogo extends JPanel {
     private JTable tabla;
     private DefaultTableModel modelo;
-    private String Columnas [] = {"descripcion", "unidad", "precio unitario"};
+    private String Columnas [] = {"descripcion", "unidad", "proveedor", "precio unitario"};
     
     
     public TablaCatalogo(){

@@ -30,7 +30,7 @@ import modelo_catalogo.Obra;
 public class VistaSeleccion extends JFrame implements InterfaceVista{
     
     private JPanel panel1, panel2, panel3;
-    private JButton btnSeleccionar;
+    private JButton btnSeleccionar, btnFiltrar;
     private JLabel lbCantidad;
     private JTextField txtcantidad;
     private JTable tabla;
@@ -54,6 +54,7 @@ public class VistaSeleccion extends JFrame implements InterfaceVista{
        this.lbCantidad = new JLabel("Cantidad");
        this.txtcantidad = new JTextField("");
        this.btnSeleccionar = new JButton("Seleccionar");
+       this.btnFiltrar = new JButton("Filtrar");
       
        this.btnSeleccionar.setActionCommand(SELECCIONAR);
        
@@ -80,7 +81,7 @@ public class VistaSeleccion extends JFrame implements InterfaceVista{
                     Object [] data = new Object[5];
                     data[0] = obra.getId();
                     data[1] = obra.getDescripcion();
-                    data[2] = obra.getUnidad();
+                    data[2] = obra.getUnidad().getNombre();
                     data[3] = obra.getPrecioUnitario();
                    
                     this.modelo.addRow(data);
@@ -117,8 +118,8 @@ public class VistaSeleccion extends JFrame implements InterfaceVista{
         public String[] setFiltro(){
            String [] filtros = new String[2];
            filtros[0] = "filtro1";
-            filtros[1] = "filtro2";
-            return filtros;
+           filtros[1] = "filtro2";
+           return filtros;
         }
 
     @Override
